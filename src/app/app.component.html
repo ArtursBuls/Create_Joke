@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="wrapperWraper">
+    <div class="appWrapper">
+      <h1 class="mainTitle">{{ title }}</h1>
+      <div class="inputsWrapper">
+        <h3 class="inputTitle">Question:</h3>
+        <div class="input-group-lg mb-3">
+          <input
+            [(ngModel)]="newQuestion"
+            type="text"
+            class="form-control"
+            placeholder="Enter the question"
+          />
+        </div>
+        <h3 class="inputTitle">Answer:</h3>
+        <div class="input-group-lg mb-3">
+          <input
+            [(ngModel)]="newAnswer"
+            name="answer"
+            type="text"
+            class="form-control"
+            placeholder="Enter the punchline"
+          />
+        </div>
+        <button (click)="inputsHandler()" type="button" class="btn btn-success">
+          Create
+        </button>
+      </div>
+      <div *ngFor="let item of jokes; let i = index" class="jokeWrapper">
+        <p class="questionItem">{{ item.question }}</p>
+        <p class="answerItem" *ngIf="item.showAnswer">{{ item.answer }}</p>
+        <button
+          (click)="showhandler(i)"
+          type="button"
+          class="btn btn-info mr-2"
+        >
+          Tell Me
+        </button>
+        <button (click)="deleteHandler(i)" type="button" class="btn btn-danger">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
